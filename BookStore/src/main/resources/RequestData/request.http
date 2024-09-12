@@ -1,0 +1,40 @@
+POST http://localhost:8080/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    "emailAddress": "example２@alhinc.jp",
+    "name": "aa",
+    "password": "aaaaa"
+}
+
+###
+GET http://localhost:8080/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    # "dateFilter": {
+    #     "start": "2024-09-07 10:00:01",
+    #     "end": "2024-09-07 10:00:00"
+    # },
+    # "limit": 1000
+}
+
+###
+GET http://localhost:8080/users/ab56751b-f31f-47b5t-b05c-7ee66046f2a6
+Content-Type: application/json
+Accept: application/json
+
+{}
+
+###
+PUT http://localhost:8080/users/a
+Content-Type: application/json
+Accept: application/json
+
+{
+    "emailAddress": "example２@alhinc.jp",
+    "name": "aa",
+    "password": "aaaaa"
+}

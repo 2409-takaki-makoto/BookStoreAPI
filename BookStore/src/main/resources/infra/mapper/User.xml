@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.BookStore.infra.UserMapper">
+	<insert id="insert" parameterType="Map">
+		INSERT INTO users (
+			id,
+			name,
+			email_address,
+			password
+		) VALUES (
+			#{id.value},
+			#{name.value},
+			#{emailAddress.value},
+			#{password.value}
+		)
+	</insert>
+	
+	<select id="emailExists" resultType="boolean" parameterType="com.example.BookStore.domain.values.EmailAddress">
+		SELECT EXISTS (
+			SELECT 1 FROM users WHERE email_address = #{value}
+		)
+	</select>
+	
+	<select id="selectUsers" resultMap="User" parameterType="com.example.BookStore.domain.model.user.UserSearchCondition">
+		SELECT * FROM users
+		WHERE
+			created_date BETWEEN #{filterCondition.start} AND #{filterCondition.end}
+		ORDER BY created_date DESC
+		LIMIT #{limit.value}
+	</select>
+	
+	<select id="findById" resultMap="User" parameterType="com.example.BookStore.domain.values.UserId">
+		SELECT * FROM users
+		WHERE
+			id = #{value}
+	</select>
+	
+	<update id="update" parameterType="com.example.BookStore.domain.model.User">
+		UPDATE users SET
+			name = #{name.value},
+			email_address = #{emailAddress.value},
+			password = #{password.value}
+		WHERE id = #{id.value}
+	</update>
+	
+	<resultMap type="com.example.BookStore.domain.model.User" id="User">
+		<association property="id" javaType="com.example.BookStore.domain.values.UserId">
+			<constructor>
+				<arg name="value" column="id" javaType="string"/>
+			</constructor>
+		</association>
+		<association property="name" javaType="com.example.BookStore.domain.values.UserName">
+			<constructor>
+				<arg name="value" column="name" javaType="string" />
+			</constructor>
+		</association>
+		<association property="emailAddress" javaType="com.example.BookStore.domain.values.EmailAddress" >
+			<constructor>
+				<arg name="value" column="email_address" javaType="string" />
+			</constructor>
+		</association>
+		<association property="password" javaType="com.example.BookStore.domain.values.UserPassword">
+			<constructor>
+				<arg name="value" column="password" javaType="string" />
+			</constructor>
+		</association>
+		<association property="createdDate" javaType="com.example.BookStore.domain.values.CreatedDate">
+			<constructor>
+				<arg  name="value" column="created_date" javaType="java.time.LocalDateTime"/>
+			</constructor>
+		</association>
+		<association property="updatedDate" javaType="com.example.BookStore.domain.values.UpdatedDate">
+			<constructor>
+				<arg name="value" column="updated_date" javaType="java.time.LocalDateTime"/>
+			</constructor>
+		</association>
+	</resultMap>
+</mapper>
