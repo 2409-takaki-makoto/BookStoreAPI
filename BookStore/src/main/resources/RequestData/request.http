@@ -3,9 +3,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "emailAddress": "example２@alhinc.jp",
-    "name": "aa",
-    "password": "aaaaa"
+    "emailAddress": "demo@example.jp",
+    "name": "サンプル　デモ",
+    "password": "password"
 }
 
 ###
