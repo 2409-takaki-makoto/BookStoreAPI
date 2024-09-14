@@ -21,6 +21,10 @@
 		</selectKey>
 	</insert>
 	
+	<select id="getAll" resultMap="Book">
+		SELECT * FROM books
+	</select>
+	
 	<resultMap type="com.example.BookStore.domain.model.Book" id="Book">
 		<association property="id" javaType="com.example.BookStore.domain.values.BookId">
 			<constructor>

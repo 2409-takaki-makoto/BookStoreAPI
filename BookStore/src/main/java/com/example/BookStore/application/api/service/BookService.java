@@ -1,5 +1,7 @@
 package com.example.BookStore.application.api.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.BookStore.domain.model.Book;
@@ -18,6 +20,10 @@ public class BookService {
 	
 	public void register(Book book) {
 		bookRepository.register(book);
+	}
+	
+	public List<Book> getBookList(){
+		return bookRepository.getAll();
 	}
 	
 }

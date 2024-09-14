@@ -1,7 +1,10 @@
 package com.example.BookStore.application.api.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.BookStore.application.api.request.BookRegisterRequest;
 import com.example.BookStore.application.api.response.BookRegisterResponse;
+import com.example.BookStore.application.api.response.GetBookListResponse;
 import com.example.BookStore.application.api.service.BookService;
 import com.example.BookStore.domain.model.Book;
 
@@ -31,5 +35,13 @@ public class BookController {
 		
 		
 		return BookRegisterResponse.convertFromBook(book);
+	}
+	
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public GetBookListResponse getBookList() {
+		List<Book> books = bookService.getBookList();
+		
+		return GetBookListResponse.convertFromBook(books);
 	}
 }

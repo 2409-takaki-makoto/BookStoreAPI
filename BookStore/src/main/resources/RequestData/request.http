@@ -48,6 +48,11 @@ Accept: application/json
     "title": "タイトル",
     "author": "著者",
     "price": 0,
-    "stock": 1,
-    "salesStatusCode": "00"
+    "stock": 1
+    # "salesStatusCode": "01"
 }
+
+###
+GET http://localhost:8080/books
+Content-Type: application/json
+Accept: application/json
