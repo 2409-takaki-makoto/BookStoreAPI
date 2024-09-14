@@ -5,9 +5,14 @@ import java.util.Map;
 import java.util.Objects;
 
 public record SalesStatusCode(String value) {
-
-	/** 販売中止 */	final public static SalesStatusCode DISCOUNTINUE = new SalesStatusCode("00");
-	/** 販売中 */	final public static SalesStatusCode SALL = new SalesStatusCode("01");
+	public SalesStatusCode {
+		
+		if (value == null) value = "00";
+		
+		if (!CODE_LIST.containsKey(value)) {
+			throw new IllegalArgumentException("販売ステータスコードの初期化に失敗");
+		}
+	}
 
 	final private static Map<String, String> CODE_LIST = new HashMap<>();
 	static {
@@ -15,12 +20,15 @@ public record SalesStatusCode(String value) {
 		CODE_LIST.put("01", "販売中");
 	}
 
-	public SalesStatusCode(String value) {
-		if (value == null || !CODE_LIST.containsKey(value)) {
-			throw new IllegalArgumentException("販売ステータスコードの初期化に失敗");
-		}
-		
-		this.value = value;
+	/** 販売中止 */
+	final public static SalesStatusCode DISCOUNTINUE = new SalesStatusCode("00");
+	/** 販売中 */
+	final public static SalesStatusCode SALL = new SalesStatusCode("01");
+
+
+	
+	public static Map<String, String> getCodeList() {
+		return new HashMap<>(CODE_LIST);
 	}
 	
 	@Override

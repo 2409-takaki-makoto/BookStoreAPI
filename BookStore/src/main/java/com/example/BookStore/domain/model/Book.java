@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import com.example.BookStore.domain.values.BookAuthor;
 import com.example.BookStore.domain.values.BookId;
+import com.example.BookStore.domain.values.BookTitle;
 import com.example.BookStore.domain.values.CreatedDate;
 import com.example.BookStore.domain.values.Price;
 import com.example.BookStore.domain.values.SalesStatusCode;
@@ -19,7 +20,7 @@ import lombok.ToString;
 @ToString
 public class Book {
 	private BookId id;
-	private Book title;
+	private BookTitle title;
 	private BookAuthor author;
 	private Price price;
 	private Stock stock;

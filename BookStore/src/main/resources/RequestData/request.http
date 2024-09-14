@@ -3,9 +3,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "emailAddress": "demo@example.jp",
-    "name": "サンプル　デモ",
-    "password": "password"
+    "emailAddress": "example２@alhinc.jp",
+    "name": "aa",
+    "password": "aaaaa"
 }
 
 ###
@@ -18,7 +18,7 @@ Accept: application/json
     #     "start": "2024-09-07 10:00:01",
     #     "end": "2024-09-07 10:00:00"
     # },
-    # "limit": 1000
+    "limit": 10
 }
 
 ###
@@ -37,4 +37,17 @@ Accept: application/json
     "emailAddress": "example２@alhinc.jp",
     "name": "aa",
     "password": "aaaaa"
+}
+
+###
+POST http://localhost:8080/books
+Content-Type: application/json
+Accept: application/json
+
+{
+    "title": "タイトル",
+    "author": "著者",
+    "price": 0,
+    "stock": 1,
+    "salesStatusCode": "00"
 }

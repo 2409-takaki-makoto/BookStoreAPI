@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.BookStore.infra.BookMapper">
+	<insert id="register" parameterType="com.example.BookStore.domain.model.Book" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		INSERT INTO books (
+			title,
+			author,
+			price,
+			stock,
+			sales_status_code
+		) VALUES (
+			#{title.value},
+			#{author.value},
+			#{price.value},
+			#{stock.value},
+			#{salesStatusCode.value}
+		)
+		
+		<selectKey keyProperty="id" resultType="com.example.BookStore.domain.values.BookId" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<resultMap type="com.example.BookStore.domain.model.Book" id="Book">
+		<association property="id" javaType="com.example.BookStore.domain.values.BookId">
+			<constructor>
+				<arg name="value" column="id" javaType="long"/>
+			</constructor>
+		</association>
+		<association property="title" javaType="com.example.BookStore.domain.values.BookTitle">
+			<constructor>
+				<arg name="value" column="title" javaType="string" />
+			</constructor>
+		</association>
+		<association property="author" javaType="com.example.BookStore.domain.values.BookAuthor" >
+			<constructor>
+				<arg name="value" column="author" javaType="string" />
+			</constructor>
+		</association>
+		<association property="price" javaType="com.example.BookStore.domain.values.Price">
+			<constructor>
+				<arg name="value" column="price" javaType="long" />
+			</constructor>
+		</association>
+		<association property="stock" javaType="com.example.BookStore.domain.values.Stock">
+			<constructor>
+				<arg name="value" column="stock" javaType="long" />
+			</constructor>
+		</association>
+		<association property="salesStatusCode" javaType="com.example.BookStore.domain.values.SalesStatusCode">
+			<constructor>
+				<arg name="value" column="sales_status_code" javaType="string"/>
+			</constructor>
+		</association>
+		<association property="createdDate" javaType="com.example.BookStore.domain.values.CreatedDate">
+			<constructor>
+				<arg  name="value" column="created_date" javaType="java.time.LocalDateTime"/>
+			</constructor>
+		</association>
+		<association property="updatedDate" javaType="com.example.BookStore.domain.values.UpdatedDate">
+			<constructor>
+				<arg name="value" column="updated_date" javaType="java.time.LocalDateTime"/>
+			</constructor>
+		</association>
+	</resultMap>
+</mapper>
