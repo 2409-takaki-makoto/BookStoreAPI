@@ -25,6 +25,11 @@
 		SELECT * FROM books
 	</select>
 	
+	<select id="getBook" parameterType="com.example.BookStore.domain.values.BookId" resultMap="Book">
+		SELECT * FROM books
+		WHERE id = #{value}
+	</select>
+	
 	<resultMap type="com.example.BookStore.domain.model.Book" id="Book">
 		<association property="id" javaType="com.example.BookStore.domain.values.BookId">
 			<constructor>

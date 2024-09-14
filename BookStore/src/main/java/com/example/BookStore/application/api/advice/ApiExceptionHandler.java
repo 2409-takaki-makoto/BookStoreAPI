@@ -22,9 +22,9 @@ import com.example.BookStore.application.exception.error.ErrorObject;
 public class ApiExceptionHandler {
 	/** エラーレスポンスのステータス判定用 */
 	final private static List<ErrorObject> NOT_FOUND_ERROR_LIST = new ArrayList<>();
-	
 	static {
 		NOT_FOUND_ERROR_LIST.add(ErrorObject.ユーザー情報がみつかりません);
+		NOT_FOUND_ERROR_LIST.add(ErrorObject.書籍情報が見つかりません);
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

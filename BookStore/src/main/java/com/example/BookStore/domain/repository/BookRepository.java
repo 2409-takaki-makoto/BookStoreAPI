@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.BookStore.domain.model.Book;
+import com.example.BookStore.domain.values.BookId;
 
 @Repository
 public interface BookRepository {
 	void register(Book book);
 	List<Book> getAll();
+	Book getBook(BookId bookId);
 }

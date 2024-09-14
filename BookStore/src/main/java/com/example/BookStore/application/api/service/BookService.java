@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.BookStore.domain.model.Book;
 import com.example.BookStore.domain.repository.BookRepository;
+import com.example.BookStore.domain.values.BookId;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +25,10 @@ public class BookService {
 	
 	public List<Book> getBookList(){
 		return bookRepository.getAll();
+	}
+	
+	public Book getBook(BookId bookId) {
+		return bookRepository.getBook(bookId);
 	}
 	
 }
