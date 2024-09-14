@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.BookStore.application.exception.BusinessException;
+import com.example.BookStore.application.exception.error.ErrorObject;
 import com.example.BookStore.domain.model.Book;
 import com.example.BookStore.domain.repository.BookRepository;
 import com.example.BookStore.domain.values.BookId;
@@ -28,7 +30,26 @@ public class BookService {
 	}
 	
 	public Book getBook(BookId bookId) {
-		return bookRepository.getBook(bookId);
+		Book book = bookRepository.getBook(bookId);
+		
+		if (book == null) {
+			throw new BusinessException(ErrorObject.書籍情報が見つかりません);
+		}
+		
+		return book;
+	}
+	
+	public void update(Book book) {
+		// 書籍情報の取得
+		Book beforeBook = bookRepository.getBook(book.getId());
+		
+		if (beforeBook == null) {
+			throw new BusinessException(ErrorObject.書籍情報が見つかりません);
+		}
+		
+		// 更新
+		bookRepository.update(book);
+		
 	}
 	
 }

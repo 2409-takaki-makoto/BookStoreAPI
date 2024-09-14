@@ -30,6 +30,17 @@
 		WHERE id = #{value}
 	</select>
 	
+	<update id="update" parameterType="com.example.BookStore.domain.model.Book" >
+		UPDATE books SET
+		 title = #{title.value},
+		 author = #{author.value},
+		 price = #{price.value},
+		 stock = #{stock.value},
+		 sales_status_code = #{salesStatusCode.value}
+		WHERE
+		 id = #{id.value}
+	</update>
+	
 	<resultMap type="com.example.BookStore.domain.model.Book" id="Book">
 		<association property="id" javaType="com.example.BookStore.domain.values.BookId">
 			<constructor>

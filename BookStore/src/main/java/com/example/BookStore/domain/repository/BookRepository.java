@@ -12,4 +12,5 @@ public interface BookRepository {
 	void register(Book book);
 	List<Book> getAll();
 	Book getBook(BookId bookId);
+	void update(Book book);
 }
