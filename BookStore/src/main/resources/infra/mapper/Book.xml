@@ -41,6 +41,12 @@
 		 id = #{id.value}
 	</update>
 	
+	<delete id="delete" parameterType="com.example.BookStore.domain.values.BookId">
+		DELETE FROM books
+		WHERE
+		 id = #{value}
+	</delete>
+	
 	<resultMap type="com.example.BookStore.domain.model.Book" id="Book">
 		<association property="id" javaType="com.example.BookStore.domain.values.BookId">
 			<constructor>

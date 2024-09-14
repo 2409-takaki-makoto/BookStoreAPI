@@ -52,4 +52,14 @@ public class BookService {
 		
 	}
 	
+	public void delete(BookId bookId) {
+		// 書籍情報の取得
+		Book book = bookRepository.getBook(bookId);
+		if (book == null) {
+			throw new BusinessException(ErrorObject.書籍情報が見つかりません);
+		}
+		
+		bookRepository.delete(bookId);
+	}
+	
 }
