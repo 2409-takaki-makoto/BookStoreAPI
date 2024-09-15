@@ -66,6 +66,12 @@ public class UserService {
 	 * @param user
 	 */
 	public void updateUser(User user) {
+		
+		User checkUser = userRepository.findById(user.getId());
+		if (checkUser == null) {
+			throw new BusinessException(ErrorObject.ユーザー情報がみつかりません);
+		}
+		
 		userRepository.update(user);
 	}
 }

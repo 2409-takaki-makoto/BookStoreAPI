@@ -78,9 +78,10 @@ public class UserController {
 	}
 	
 	@PutMapping("/{id}")
-	@ResponseStatus(HttpStatus.OK)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void updateUser(@PathVariable("id") UserId userId, @Validated @RequestBody SignUpUserRequest request) {
 		User user = request.convertToDomain();
+		user.setId(userId);
 		
 		userService.updateUser(user);
 	}
