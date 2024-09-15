@@ -7,7 +7,7 @@ public record TaxRate(Float value) {
 	final public static TaxRate RATE_8 = new TaxRate(0.08f);
 	final public static TaxRate RATE_10 = new TaxRate(0.10f);
 
-	// 税率が10%に変更された日付
+	// 定数：税率が10%に変更された日付
 	final private static LocalDateTime TAX_RATE_CHANGE_DATE_TO_010 = LocalDateTime.parse("2019-10-01T00:00:00");
 
 	public TaxRate {

@@ -42,7 +42,7 @@ public class UserController {
 		
 		User user = request.convertToDomain();
 		
-		userService.signUp(user);
+		userService.register(user);
 		
 		SignUpUserResponse response = SignUpUserResponse.convertFromDomain(user);
 		return response;
@@ -60,7 +60,7 @@ public class UserController {
 		
 		
 		UserSearchCondition condition = request.convertToDomain();
-		List<User> users = userService.getUserList(condition);
+		List<User> users = userService.getList(condition);
 		
 		
 		return GetUsersResponse.convertFromDomain(users);
@@ -71,7 +71,7 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	public UserResponse getUser(@PathVariable("id") UserId userId) {
 		
-		User user = userService.getUser(userId);
+		User user = userService.getById(userId);
 		
 		
 		return UserResponse.convertFromDomain(user);

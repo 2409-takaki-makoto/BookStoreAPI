@@ -14,7 +14,9 @@ public record Tax(Long value) {
 	
 	/**
 	 * 
-	 * 金額と税率から消費税額を取得する
+	 * <p>消費税額を作成する</p>
+	 * 
+	 * <dd>金額と税率から消費税額を取得する</dd>
 	 * 
 	 * @param price
 	 * @param taxRate

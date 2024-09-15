@@ -13,7 +13,9 @@ public record OrderDate(LocalDateTime value) {
 	}
 	
 	/**
-	 * 注文日が入力された日付よりも前の日付であるか判定する
+	 * <p>注文日の前日判定</p>
+	 * 
+	 * <dd>注文日が入力された日付よりも前の日付であるか判定する</dd>
 	 * @return
 	 */
 	public boolean isBeforeDate(LocalDateTime date) {

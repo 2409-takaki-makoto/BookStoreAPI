@@ -23,7 +23,7 @@ public record TotalCost(Long value) implements IPrice {
 	}
 	
 	/**
-	 * 単価と数量から合計金額を算出する
+	 * 単価と数量から合計金額を作成する
 	 */
 	public static TotalCost createTotalCostFromUnitCost(UnitCost unitCost, OrderQty orderQty) {
 		return new TotalCost(unitCost.value() * orderQty.value());

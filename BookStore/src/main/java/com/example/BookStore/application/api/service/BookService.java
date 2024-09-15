@@ -21,16 +21,24 @@ public class BookService {
 
 	final BookRepository bookRepository;
 	
+	/**
+	 * 書籍新規登録
+	 * @param book
+	 */
 	public void register(Book book) {
 		bookRepository.register(book);
 	}
 	
-	public List<Book> getBookList(){
+	/**
+	 * 書籍一覧取得
+	 * @return
+	 */
+	public List<Book> getAll(){
 		return bookRepository.getAll();
 	}
 	
 	public Book getBook(BookId bookId) {
-		Book book = bookRepository.getBook(bookId);
+		Book book = bookRepository.findById(bookId);
 		
 		if (book == null) {
 			throw new BusinessException(ErrorObject.書籍情報が見つかりません);
@@ -41,7 +49,7 @@ public class BookService {
 	
 	public void update(Book book) {
 		// 書籍情報の取得
-		Book beforeBook = bookRepository.getBook(book.getId());
+		Book beforeBook = bookRepository.findById(book.getId());
 		
 		if (beforeBook == null) {
 			throw new BusinessException(ErrorObject.書籍情報が見つかりません);
@@ -54,7 +62,7 @@ public class BookService {
 	
 	public void delete(BookId bookId) {
 		// 書籍情報の取得
-		Book book = bookRepository.getBook(bookId);
+		Book book = bookRepository.findById(bookId);
 		if (book == null) {
 			throw new BusinessException(ErrorObject.書籍情報が見つかりません);
 		}

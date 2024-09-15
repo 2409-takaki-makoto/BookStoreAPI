@@ -11,9 +11,9 @@ import com.example.BookStore.domain.values.UserId;
 
 @Repository
 public interface UserRepository {
-	void insert(User user);
+	void register(User user);
 	boolean emailExists(EmailAddress emailAddress);
-	List<User> selectUsers(UserSearchCondition conditino);
+	List<User> getAll(UserSearchCondition conditino);
 	User findById(UserId userId);
 	void update(User user);
 }

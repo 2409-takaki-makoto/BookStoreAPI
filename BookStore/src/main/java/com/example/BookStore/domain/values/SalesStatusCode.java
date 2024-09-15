@@ -26,7 +26,11 @@ public record SalesStatusCode(String value) {
 	final public static SalesStatusCode SALL = new SalesStatusCode("01");
 
 
-	
+	/**
+	 * コードリスト取得
+	 * 
+	 * @return
+	 */
 	public static Map<String, String> getCodeList() {
 		return new HashMap<>(CODE_LIST);
 	}

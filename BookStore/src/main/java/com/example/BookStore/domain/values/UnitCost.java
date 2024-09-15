@@ -2,7 +2,7 @@ package com.example.BookStore.domain.values;
 
 import java.util.Objects;
 
-public record UnitCost(Long value) {
+public record UnitCost(Long value) implements IPrice{
 
 	public UnitCost(Long value) {
 		if (value == null) {

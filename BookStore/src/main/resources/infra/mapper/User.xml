@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.BookStore.infra.UserMapper">
-	<insert id="insert" parameterType="Map">
+	<insert id="register" parameterType="Map">
 		INSERT INTO users (
 			id,
 			name,
@@ -21,7 +21,7 @@
 		)
 	</select>
 	
-	<select id="selectUsers" resultMap="User" parameterType="com.example.BookStore.domain.model.user.UserSearchCondition">
+	<select id="getAll" resultMap="User" parameterType="com.example.BookStore.domain.model.user.UserSearchCondition">
 		SELECT * FROM users
 		WHERE
 			created_date BETWEEN #{filterCondition.start} AND #{filterCondition.end}

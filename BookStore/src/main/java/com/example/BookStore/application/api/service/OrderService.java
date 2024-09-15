@@ -31,7 +31,7 @@ public class OrderService {
 		}
 		
 		// 書籍情報の取得
-		Book book = bookRepository.getBook(order.getBookId());
+		Book book = bookRepository.findById(order.getBookId());
 		
 		// 書籍情報の存在チェック
 		if (book == null) {

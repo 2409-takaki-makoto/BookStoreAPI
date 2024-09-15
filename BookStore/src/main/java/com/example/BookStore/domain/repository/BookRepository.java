@@ -11,7 +11,7 @@ import com.example.BookStore.domain.values.BookId;
 public interface BookRepository {
 	void register(Book book);
 	List<Book> getAll();
-	Book getBook(BookId bookId);
+	Book findById(BookId bookId);
 	void update(Book book);
 	void delete(BookId bookId);
 }

@@ -25,7 +25,7 @@
 		SELECT * FROM books
 	</select>
 	
-	<select id="getBook" parameterType="com.example.BookStore.domain.values.BookId" resultMap="Book">
+	<select id="findById" parameterType="com.example.BookStore.domain.values.BookId" resultMap="Book">
 		SELECT * FROM books
 		WHERE id = #{value}
 	</select>

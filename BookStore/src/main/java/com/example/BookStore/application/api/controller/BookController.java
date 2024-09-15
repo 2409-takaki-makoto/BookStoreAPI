@@ -44,7 +44,7 @@ public class BookController {
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public GetBookListResponse getBookList() {
-		List<Book> books = bookService.getBookList();
+		List<Book> books = bookService.getAll();
 
 		return GetBookListResponse.convertFromBook(books);
 	}

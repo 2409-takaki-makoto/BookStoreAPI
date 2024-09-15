@@ -29,28 +29,28 @@ public class UserService {
 	 * ユーザーの新規登録を行う
 	 * @param user
 	 */
-	public void signUp(User user) {
+	public void register(User user) {
 		// メールアドレスの重複をチェックする.
 		if (emailAddressDuplicationCheckDomainService.execute(user.getEmailAddress())) {
 			throw new BusinessException(ErrorObject.メールアドレスが重複しています);
 		}
 		
 		// ユーザー情報の登録を行う.
-		userRepository.insert(user);
+		userRepository.register(user);
 	}
 	
 	/**
 	 * ユーザーの一覧を取得する
 	 * @return
 	 */
-	public List<User> getUserList(UserSearchCondition condition) {
-		return userRepository.selectUsers(condition);
+	public List<User> getList(UserSearchCondition condition) {
+		return userRepository.getAll(condition);
 	}
 	
 	/**
 	 * IDに紐づくユーザー情報を取得する
 	 */
-	public User getUser(UserId userId) {
+	public User getById(UserId userId) {
 		User user = userRepository.findById(userId);
 		
 		if (user == null) {
