@@ -6,9 +6,9 @@ import com.example.BookStore.domain.values.BookAuthor;
 import com.example.BookStore.domain.values.BookId;
 import com.example.BookStore.domain.values.BookTitle;
 import com.example.BookStore.domain.values.CreatedDate;
-import com.example.BookStore.domain.values.Price;
 import com.example.BookStore.domain.values.SalesStatusCode;
 import com.example.BookStore.domain.values.Stock;
+import com.example.BookStore.domain.values.UnitCost;
 import com.example.BookStore.domain.values.UpdatedDate;
 
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class Book {
 	private BookId id;
 	private BookTitle title;
 	private BookAuthor author;
-	private Price price;
+	private UnitCost price;
 	private Stock stock;
 	private SalesStatusCode salesStatusCode;
 	private CreatedDate createdDate;

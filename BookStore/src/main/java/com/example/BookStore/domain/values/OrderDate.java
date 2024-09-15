@@ -1,0 +1,30 @@
+package com.example.BookStore.domain.values;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public record OrderDate(LocalDateTime value) {
+	
+	public OrderDate {
+		if (value == null) {
+			value = LocalDateTime.now();
+		}
+	}
+	
+	/**
+	 * 注文日が入力された日付よりも前の日付であるか判定する
+	 * @return
+	 */
+	public boolean isBeforeDate(LocalDateTime date) {
+		LocalDate inputDate = date.toLocalDate();
+		LocalDate orderDate = this.value.toLocalDate();
+		
+		return orderDate.isBefore(inputDate);
+	}
+	
+	public String formatDisplay() {
+		return value.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
+
+}

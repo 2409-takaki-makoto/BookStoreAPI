@@ -63,7 +63,7 @@
 				<arg name="value" column="author" javaType="string" />
 			</constructor>
 		</association>
-		<association property="price" javaType="com.example.BookStore.domain.values.Price">
+		<association property="price" javaType="com.example.BookStore.domain.values.UnitCost">
 			<constructor>
 				<arg name="value" column="price" javaType="long" />
 			</constructor>

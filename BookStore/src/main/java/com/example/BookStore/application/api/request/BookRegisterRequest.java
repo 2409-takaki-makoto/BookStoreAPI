@@ -9,9 +9,9 @@ import com.example.BookStore.application.api.customvalidation.salesstatuscodeche
 import com.example.BookStore.domain.model.Book;
 import com.example.BookStore.domain.values.BookAuthor;
 import com.example.BookStore.domain.values.BookTitle;
-import com.example.BookStore.domain.values.Price;
 import com.example.BookStore.domain.values.SalesStatusCode;
 import com.example.BookStore.domain.values.Stock;
+import com.example.BookStore.domain.values.UnitCost;
 
 import lombok.Data;
 
@@ -38,7 +38,7 @@ public class BookRegisterRequest {
 		Book book = new Book();
 		book.setTitle(new BookTitle(title));
 		book.setAuthor(new BookAuthor(author));
-		book.setPrice(new Price(price));
+		book.setPrice(new UnitCost(price));
 		book.setStock(new Stock(stock));
 		book.setSalesStatusCode(new SalesStatusCode(salesStatusCode));
 		

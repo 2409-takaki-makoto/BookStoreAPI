@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.BookStore.infra.OrderMapper">
+	<insert id="register" parameterType="com.example.BookStore.domain.model.Order" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		INSERT INTO orders (
+			user_id,
+			book_id,
+			order_qty,
+			unit_cost,
+			tax_rate,
+			total_cost,
+			tax,
+			order_date,
+			order_status_code
+		) VALUES (
+			#{userId.value},
+			#{bookId.value},
+			#{orderQty.value},
+			#{unitCost.value},
+			#{taxRate.value},
+			#{totalCost.value},
+			#{tax.value},
+			#{orderDate.value},
+			#{orderStatusCode.value}
+		)
+		
+		<selectKey keyProperty="id" resultType="com.example.BookStore.domain.values.OrderId" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<resultMap type="com.example.BookStore.domain.model.Order" id="Order">
+		<association property="id" javaType="com.example.BookStore.domain.values.OrderId">
+			<constructor>
+				<arg name="value" column="id" javaType="long"/>
+			</constructor>
+		</association>
+		<association property="userId" javaType="com.example.BookStore.domain.values.UserId">
+			<constructor>
+				<arg name="value" column="user_id" javaType="string" />
+			</constructor>
+		</association>
+		<association property="bookId" javaType="com.example.BookStore.domain.values.BookId">
+			<constructor>
+				<arg name="value" column="book_id" javaType="long" />
+			</constructor>
+		</association>
+		<association property="orderQty" javaType="com.example.BookStore.domain.values.OrderQty" >
+			<constructor>
+				<arg name="value" column="order_qty" javaType="long" />
+			</constructor>
+		</association>
+		<association property="unitCost" javaType="com.example.BookStore.domain.values.UnitCost">
+			<constructor>
+				<arg name="value" column="unit_cost" javaType="long" />
+			</constructor>
+		</association>
+		<association property="taxRate" javaType="com.example.BookStore.domain.values.TaxRate">
+			<constructor>
+				<arg name="value" column="tax_rate" javaType="float" />
+			</constructor>
+		</association>
+		<association property="totalCost" javaType="com.example.BookStore.domain.values.TotalCost">
+			<constructor>
+				<arg name="value" column="total_cost" javaType="long"/>
+			</constructor>
+		</association>
+		<association property="tax" javaType="com.example.BookStore.domain.values.Tax">
+			<constructor>
+				<arg name="value" column="tax" javaType="long"/>
+			</constructor>
+		</association>
+		<association property="orderDate" javaType="com.example.BookStore.domain.values.OrderDate">
+			<constructor>
+				<arg name="value" column="total_cost" javaType="java.time.LocalDateTime"/>
+			</constructor>
+		</association>
+		<association property="orderStatusCode" javaType="com.example.BookStore.domain.values.OrderStatusCode">
+			<constructor>
+				<arg name="value" column="order_status_code" javaType="string"/>
+			</constructor>
+		</association>
+		<association property="createdDate" javaType="com.example.BookStore.domain.values.CreatedDate">
+			<constructor>
+				<arg  name="value" column="created_date" javaType="java.time.LocalDateTime"/>
+			</constructor>
+		</association>
+		<association property="updatedDate" javaType="com.example.BookStore.domain.values.UpdatedDate">
+			<constructor>
+				<arg name="value" column="updated_date" javaType="java.time.LocalDateTime"/>
+			</constructor>
+		</association>
+	</resultMap>
+</mapper>
