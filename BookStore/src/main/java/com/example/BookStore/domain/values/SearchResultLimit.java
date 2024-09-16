@@ -5,7 +5,10 @@ package com.example.BookStore.domain.values;
  */
 public record SearchResultLimit(Long value) {
 	
-	final private static Long LIMIT_DEFAULT = 1000L;
+	/** 定数： 検索上限数のデフォルト値 */
+	final public static Long LIMIT_DEFAULT = 1_000L;
+	/** 定数： 最大検索上限数 */
+	final public static Long LIMIT_MAX = 10_000L;
 	
 	/**
 	 * コンストラクタ
@@ -27,6 +30,8 @@ public record SearchResultLimit(Long value) {
 	}
 	
 	/**
+	 * <p>検索上限数有効範囲チェック</p>
+	 * 
 	 * <p>設定値が範囲内であるか検証する。</p>
 	 * 	<dl>
 	 * 		<dt>以下のチェックを行い、NGとなる条件が無ければOKと判定します。<dt>
@@ -34,7 +39,7 @@ public record SearchResultLimit(Long value) {
 	 * 			<ul>
 	 * 				<li>設定値がマイナスの場合はNG</li>
 	 * 				<li>設定値が0の場合はNG</li>
-	 * 				<li>設定値が10000を超える場合はNG</li>
+	 * 				<li>設定値が10,000件を超える場合はNG</li>
 	 * 			</ul>
 	 * 		</dd>
 	 * 
@@ -42,8 +47,8 @@ public record SearchResultLimit(Long value) {
 	 * @return
 	 * 	OKの場合は{@code TRUE}を返却します。
 	 */
-	private boolean limitRangeCheck(Long value) {
-		if (value > 0L && value <= 10000L) {
+	public static boolean limitRangeCheck(Long value) {
+		if (value > 0L && value <= LIMIT_MAX) {
 			return true;
 		}
 		
