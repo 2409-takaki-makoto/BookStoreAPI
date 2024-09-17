@@ -2,6 +2,7 @@ package com.example.BookStore.domain.values;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 import com.example.BookStore.application.exception.BusinessException;
 import com.example.BookStore.application.exception.error.ErrorObject;
@@ -54,5 +55,24 @@ public record DateTimeFilterCondition(
 			return false;
 		}
 		return true;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return Boolean.FALSE;
+		}
+
+		if (Objects.equals(this, obj)) {
+			return Boolean.TRUE;
+		}
+
+		if (!(obj instanceof DateTimeFilterCondition)) {
+			return Boolean.FALSE;
+		}
+
+		DateTimeFilterCondition otherObj = (DateTimeFilterCondition) obj;
+
+		return this.start.equals(otherObj.start) && this.end.equals(otherObj.end);
 	}
 }
