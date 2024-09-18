@@ -11,8 +11,8 @@ public class ErrorObject {
 	public static ErrorObject 予期せぬエラーが発生しました_1 = new ErrorObject(SystemError, "9999", "予期せぬエラーが発生しました{1}");
 	
 	public static ErrorObject メールアドレスが重複しています = new ErrorObject(BusinessError, "0001", "メールアドレスが重複しています");
-	public static ErrorObject 日付の絞り込み条件では開始日は終了日より未来日を設定できません = new ErrorObject(BusinessError, "0002", "日付の絞り込み条件では開始日は終了日より未来日を設定できません");
-	public static ErrorObject ユーザー情報がみつかりません = new ErrorObject(BusinessError, "0003", "ユーザー情報が見つかりません");
+	public static ErrorObject ユーザー情報がみつかりません = new ErrorObject(BusinessError, "0002", "ユーザー情報が見つかりません");
+	public static ErrorObject 日付の絞り込み条件では開始日は終了日より未来日を設定できません = new ErrorObject(BusinessError, "0003", "日付の絞り込み条件では開始日は終了日より未来日を設定できません");
 	public static ErrorObject 書籍情報が見つかりません = new ErrorObject(BusinessError, "0004", "書籍情報が見つかりません");
 	
 	private String code;
