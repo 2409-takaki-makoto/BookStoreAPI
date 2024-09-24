@@ -1,18 +1,14 @@
 package com.example.BookStore.domain.values;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public record UserId(String value) {
 
-	public UserId(String value) {
-
+	public UserId {
 		if (value == null) {
 			UUID uuid = UUID.randomUUID();
 			value = uuid.toString();
 		}
-
-		this.value = value;
 	}
 
 	@Override
@@ -21,7 +17,7 @@ public record UserId(String value) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

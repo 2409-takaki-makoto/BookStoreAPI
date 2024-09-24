@@ -2,7 +2,6 @@ package com.example.BookStore.domain.values;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 import com.example.BookStore.application.exception.BusinessException;
 import com.example.BookStore.application.exception.error.ErrorObject;
@@ -12,32 +11,23 @@ import com.example.BookStore.application.exception.error.ErrorObject;
  */
 public record DateTimeFilterCondition(
 		LocalDateTime start,
-		LocalDateTime end
-		) {
-	
-	public DateTimeFilterCondition(LocalDateTime start, LocalDateTime end) {
-		
+		LocalDateTime end) {
+
+	public DateTimeFilterCondition {
 		if (start == null) {
 			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-			this.start = LocalDateTime.parse("2020-01-01 00:00:00", format);
-		} else {
-			this.start = start;			
+			start = LocalDateTime.parse("2020-01-01 00:00:00", format);
 		}
-		
+
 		if (end == null) {
-			this.end = LocalDateTime.now();
-		} else {
-			this.end = end;			
+			end = LocalDateTime.now();
 		}
-		
-		
-		if (!dateCorrelationCheck()) {
+
+		if (!dateCorrelationCheck(start, end)) {
 			throw new BusinessException(ErrorObject.日付の絞り込み条件では開始日は終了日より未来日を設定できません);
 		}
-		
 	}
-	
-	
+
 	/**
 	 * <DD>開始日と終了日の相関検証を行う。</DD>
 	 * 
@@ -48,22 +38,22 @@ public record DateTimeFilterCondition(
 	 * OKの時 True</br>
 	 * NGの時 False
 	 */
-	private boolean dateCorrelationCheck() {
-		
+	private boolean dateCorrelationCheck(LocalDateTime start, LocalDateTime end) {
+
 		// 開始日の日付追い越しチェック.
-		if (this.start.isAfter(this.end)) {
+		if (start.isAfter(end)) {
 			return false;
 		}
 		return true;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

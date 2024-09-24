@@ -7,9 +7,13 @@ import com.example.BookStore.domain.values.UserId;
 import com.example.BookStore.domain.values.UserName;
 import com.example.BookStore.domain.values.UserPassword;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 public class User {
 	private UserId id;
 	private UserName name;
@@ -18,4 +22,30 @@ public class User {
 	private CreatedDate createdDate;
 	private UpdatedDate updatedDate;
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return Boolean.FALSE;
+		}
+
+		if (this == obj) {
+			return Boolean.TRUE;
+		}
+
+		if (!(obj instanceof User)) {
+			return Boolean.FALSE;
+		}
+
+		User otherObj = (User) obj;
+
+		if (this.id == null) {
+			if (otherObj.id == null) {
+				return Boolean.TRUE;
+			}
+
+			return Boolean.FALSE;
+		}
+
+		return this.id.equals(otherObj.id);
+	}
 }

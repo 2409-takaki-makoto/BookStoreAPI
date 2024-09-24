@@ -43,21 +43,21 @@ public class UserServiceTest {
 
 		try {
 			userService.register(testUser);
-			
+
 			// 処理が継続した場合はテスト失敗
 			fail("例外の発生なし");
 		} catch (BusinessException e) {
 			assertEquals(ErrorObject.メールアドレスが重複しています, e.getErrorDetail());
 		}
 	}
-	
+
 	@Test
 	public void PT002_register() {
 		User testUser = new User();
 
 		when(emailExist.execute(Mockito.any())).thenReturn(false);
 		doNothing().when(userRepository).register(isA(User.class));
-		
+
 		userService.register(testUser);
 	}
 

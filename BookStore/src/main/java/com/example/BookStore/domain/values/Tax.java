@@ -1,17 +1,13 @@
 package com.example.BookStore.domain.values;
 
-import java.util.Objects;
-
 public record Tax(Long value) {
 
-	public Tax(Long value) {
+	public Tax {
 		if (value == null) {
 			value = 0L;
 		}
-		
-		this.value = value;
 	}
-	
+
 	/**
 	 * 
 	 * <p>消費税額を作成する</p>
@@ -24,18 +20,18 @@ public record Tax(Long value) {
 	 */
 	public static Tax createTaxFromPrice(IPrice price, TaxRate taxRate) {
 		double amount = price.value() * taxRate.value();
-		
-		return new Tax((long)Math.floor(amount));
-		
+
+		return new Tax((long) Math.floor(amount));
+
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

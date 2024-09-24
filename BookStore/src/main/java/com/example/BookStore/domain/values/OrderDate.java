@@ -3,7 +3,6 @@ package com.example.BookStore.domain.values;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 public record OrderDate(LocalDateTime value) {
 
@@ -36,7 +35,7 @@ public record OrderDate(LocalDateTime value) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

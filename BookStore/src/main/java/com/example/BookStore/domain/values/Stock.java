@@ -1,15 +1,11 @@
 package com.example.BookStore.domain.values;
 
-import java.util.Objects;
-
 public record Stock(Long value) {
 
-	public Stock(Long value) {
+	public Stock {
 		if (value == null) {
 			value = 0L;
 		}
-
-		this.value = value;
 	}
 
 	@Override
@@ -18,7 +14,7 @@ public record Stock(Long value) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

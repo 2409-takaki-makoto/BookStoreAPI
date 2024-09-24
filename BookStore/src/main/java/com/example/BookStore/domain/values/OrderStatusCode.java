@@ -2,16 +2,13 @@ package com.example.BookStore.domain.values;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public record OrderStatusCode(String value) {
 
 	public OrderStatusCode {
-
 		if (value == null || !CODE_LIST.containsKey(value)) {
 			throw new IllegalArgumentException("注文ステータスコードの初期化に失敗");
 		}
-
 	}
 
 	final private static Map<String, String> CODE_LIST = new HashMap<>();
@@ -42,7 +39,7 @@ public record OrderStatusCode(String value) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

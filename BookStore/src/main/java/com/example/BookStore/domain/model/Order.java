@@ -1,7 +1,5 @@
 package com.example.BookStore.domain.model;
 
-import java.util.Objects;
-
 import com.example.BookStore.domain.values.BookId;
 import com.example.BookStore.domain.values.CreatedDate;
 import com.example.BookStore.domain.values.OrderDate;
@@ -42,7 +40,7 @@ public class Order {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

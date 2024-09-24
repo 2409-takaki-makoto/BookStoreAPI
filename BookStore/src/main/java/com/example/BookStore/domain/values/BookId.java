@@ -1,15 +1,11 @@
 package com.example.BookStore.domain.values;
 
-import java.util.Objects;
-
 public record BookId(Long value) {
 
-	public BookId(Long value) {
+	public BookId {
 		if (value == null) {
 			throw new IllegalArgumentException("書籍IDの初期化に失敗");
 		}
-
-		this.value = value;
 	}
 
 	@Override
@@ -18,7 +14,7 @@ public record BookId(Long value) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 

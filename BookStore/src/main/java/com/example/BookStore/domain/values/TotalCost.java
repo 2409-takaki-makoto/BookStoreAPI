@@ -1,17 +1,13 @@
 package com.example.BookStore.domain.values;
 
-import java.util.Objects;
-
 public record TotalCost(Long value) implements IPrice {
 
-	public TotalCost(Long value) {
+	public TotalCost {
 		if (value == null) {
 			value = 0L;
 		}
-		
-		this.value = value;
 	}
-	
+
 	/**
 	 * 税込価格を算出する。
 	 * 
@@ -21,21 +17,21 @@ public record TotalCost(Long value) implements IPrice {
 	public TotalCost caluculateOfIncludeTax(Tax tax) {
 		return new TotalCost(this.value + tax.value());
 	}
-	
+
 	/**
 	 * 単価と数量から合計金額を作成する
 	 */
 	public static TotalCost createTotalCostFromUnitCost(UnitCost unitCost, OrderQty orderQty) {
 		return new TotalCost(unitCost.value() * orderQty.value());
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
 			return Boolean.FALSE;
 		}
 
-		if (Objects.equals(this, obj)) {
+		if (this == obj) {
 			return Boolean.TRUE;
 		}
 
