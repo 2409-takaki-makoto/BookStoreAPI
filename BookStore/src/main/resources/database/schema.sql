@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS orders (
 	order_status_code CHAR(2) NOT NULL default '01',
 	created_date DATETIME NOT NULL default CURRENT_TIMESTAMP,
 	updated_date DATETIME NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-	FOREIGN KEY (user_id) REFERENCES users(id),
-	FOREIGN KEY (book_id) REFERENCES books(id)
+	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+	FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
 )^;
 
 
