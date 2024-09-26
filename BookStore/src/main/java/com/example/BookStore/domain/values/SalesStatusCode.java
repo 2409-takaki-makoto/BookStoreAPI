@@ -6,8 +6,9 @@ import java.util.Map;
 public record SalesStatusCode(String value) {
 
 	public SalesStatusCode {
-		if (value == null)
-			value = "00";
+		if (value == null) {
+			value = "00";			
+		}
 
 		if (!CODE_LIST.containsKey(value)) {
 			throw new IllegalArgumentException("販売ステータスコードの初期化に失敗");
@@ -50,14 +51,6 @@ public record SalesStatusCode(String value) {
 		}
 
 		SalesStatusCode otherObj = (SalesStatusCode) obj;
-
-		if (this.value == null) {
-			if (otherObj.value == null) {
-				return Boolean.TRUE;
-			}
-
-			return Boolean.FALSE;
-		}
 
 		return this.value.equals(otherObj.value);
 	}

@@ -29,7 +29,7 @@ public record DateTimeFilterCondition(
 	}
 
 	/**
-	 * <DD>開始日と終了日の相関検証を行う。</DD>
+	 * <DD>開始日と終了日の相関チェック</DD>
 	 * 
 	 * チェック詳細</br>
 	 * 開始日日付が終了日日付を追い越している場合はNG

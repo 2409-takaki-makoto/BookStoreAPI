@@ -31,14 +31,6 @@ public record CreatedDate(LocalDateTime value) {
 
 		CreatedDate otherObj = (CreatedDate) obj;
 
-		if (this.value == null) {
-			if (otherObj.value == null) {
-				return Boolean.TRUE;
-			}
-
-			return Boolean.FALSE;
-		}
-
 		return this.value.equals(otherObj.value);
 	}
 

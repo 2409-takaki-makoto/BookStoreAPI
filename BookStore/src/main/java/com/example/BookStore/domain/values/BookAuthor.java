@@ -24,14 +24,6 @@ public record BookAuthor(String value) {
 
 		BookAuthor otherObj = (BookAuthor) obj;
 
-		if (this.value == null) {
-			if (otherObj.value == null) {
-				return Boolean.TRUE;
-			}
-
-			return Boolean.FALSE;
-		}
-
 		return this.value.equals(otherObj.value);
 	}
 }
