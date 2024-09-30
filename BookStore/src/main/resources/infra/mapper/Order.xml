@@ -72,7 +72,7 @@
 		</association>
 		<association property="orderDate" javaType="com.example.BookStore.domain.values.OrderDate">
 			<constructor>
-				<arg name="value" column="total_cost" javaType="java.time.LocalDateTime"/>
+				<arg name="value" column="order_date" javaType="java.time.LocalDateTime"/>
 			</constructor>
 		</association>
 		<association property="orderStatusCode" javaType="com.example.BookStore.domain.values.OrderStatusCode">
